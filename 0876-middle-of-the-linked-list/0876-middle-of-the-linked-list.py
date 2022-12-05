@@ -5,12 +5,17 @@
 #         self.next = next
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        fast = slow = head
-        
-        while fast and fast.next:
-            slow = slow.next #move slow pointer one step forward
-            fast = fast.next.next #move fast pointer two steps forward
-        return slow
+        currentNode = head
+        count_nodes = 0
+        while not currentNode is None:
+            count_nodes += 1
+            currentNode = currentNode.next
+        idx = count_nodes // 2
+        currentNode = head
+        for i in range(idx):
+            currentNode = currentNode.next
+        return currentNode
     
-#Time complexity: O(N); N is number of nodes in the linkedlist
+#Time complexity: O(N)
 #Space complexity: O(1)
+    
